@@ -4,10 +4,10 @@ install:
 
 test:
 	for item in $(ls); do
-		if [ -d $item ] 
-		then
-	  		nosetests ./$item/tests/
-		fi
+	  if [ -d $item ] 
+	  then
+	    nosetests ./$item/tests/
+	  fi
 	done
 
 format:	
