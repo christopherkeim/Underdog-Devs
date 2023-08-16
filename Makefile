@@ -3,10 +3,10 @@ install:
 		pip install -r requirements.txt
 
 test:
-	for item in $(ls -d); do nosetests ./$item/tests/ ; done
+	for item in $(ls -d */ | cut -d "/" -f1); do nosetests ./$item/tests/ ; done
 
 format:	
-	black *.py 
+	black .
 
 lint:
 	pylint --disable=R,C --ignore-patterns=test_.*?py ./**/*.py
