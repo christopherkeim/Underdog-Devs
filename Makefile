@@ -3,7 +3,7 @@ install:
 		pip install -r requirements.txt
 
 test:
-	for item in $(ls -d */ | cut -d "/" -f1); do nosetests ./$item/tests/ ; done
+	nose2 -s .
 
 format:	
 	black .
