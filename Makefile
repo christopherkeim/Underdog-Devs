@@ -3,12 +3,8 @@ install:
 		pip install -r requirements.txt
 
 test:
-	for item in $(ls); do \
-	  if [ -d $item ] \
-	  then
-	    nosetests ./$item/tests/ \
-	  fi \
-	done
+	for item in $(ls); do\
+	  if [ -d $item ] then nosetests ./$item/tests/ ; fi done
 
 format:	
 	black *.py 
