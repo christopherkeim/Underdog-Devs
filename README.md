@@ -10,7 +10,10 @@ Each folder will contain:
 
 ## In Progress 🔧💻
 
-[] Add support for containerization for higher parity between dev and deploy environments
-[] A little bit of vulnerability analysis with Jake
-[] Migrate to Poetry for package management
-[] Type hinting !!
+1. [ ] Add support for containerization for higher parity between dev and deploy environments
+
+2. [ ] A little bit of vulnerability analysis with Jake
+
+3. [ ] Migrate to Poetry for package management
+
+4. [ ] Type hinting !!
