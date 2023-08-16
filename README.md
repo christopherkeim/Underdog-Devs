@@ -7,3 +7,10 @@ Each folder will contain:
 2. Unit Tests
 3. Modularized solution files
 4. Jupyter Notebook holding the full set of solutions
+
+## In Progress 🔧💻
+
+[] Add support for containerization for higher parity between dev and deploy environments
+[] A little bit of vulnerability analysis with Jake
+[] Migrate to Poetry for package management
+[] Type hinting !!
