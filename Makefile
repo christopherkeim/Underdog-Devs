@@ -9,7 +9,7 @@ format:
 	black .
 
 lint:
-	pylint --disable=R,C --ignore-patterns=test_.*?py ./**/*.py
+	pylint --recursive=True --disable=R,C --ignore-patterns=test_.*?py .
 
 refactor: format lint
 
