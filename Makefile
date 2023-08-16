@@ -6,7 +6,7 @@ test:
 	for item in $(ls); do
 	if [ -d $item ] 
 	then
-	nosetests ./$item/tests/
+	nosetests ./$item/tests/ ;
 	fi 
 	done
 
