@@ -5,7 +5,7 @@ install:
 test:
 	for item in $(ls); do \
 	  if [ -d $item ] \
-	  then \
+	  then
 	    nosetests ./$item/tests/ \
 	  fi \
 	done
