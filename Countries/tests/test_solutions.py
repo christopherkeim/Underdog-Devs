@@ -9,13 +9,12 @@ class TestSolutions(TestCase):
     def setUpClass(cls):
         """Connect and load data needed by tests"""
         global DATA
-        with open("tests/fixtures/countries.txt", mode="r") as f:
+        with open("Countries/tests/fixtures/countries.txt", mode="r") as f:
             DATA = f.read().splitlines()
 
     @classmethod
     def tearDownClass(cls):
         """Clean our data out"""
-        # Close the database session
         DATA = None
 
     def test_united(self):
