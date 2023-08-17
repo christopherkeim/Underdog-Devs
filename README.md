@@ -1,6 +1,6 @@
-# Underdog-Devs
+[![CI](https://github.com/christopherkeim/Underdog-Devs/actions/workflows/cicd.yaml/badge.svg)](https://github.com/christopherkeim/Underdog-Devs/actions/workflows/cicd.yaml)
 
-This repository contains solutions to a variety of Programming Practice Problems. 
+# Underdog-Devs
 
 Each folder will contain:
 1. Data
