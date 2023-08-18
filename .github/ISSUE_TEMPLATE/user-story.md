@@ -7,15 +7,6 @@ assignees: ''
 
 ---
 
----
-name: User Story
-about: Template for User Stories to drive development.
-title: ''
-labels: ''
-assignees: ''
-
----
-
 **Role:** As a [role]  
 **Function:** I need [some function]  
 **Business Value:** So that [some benefit]  
