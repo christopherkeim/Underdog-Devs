@@ -13,8 +13,6 @@ jobs:
     env:
       POETRY_HOME: /opt/poetry
       POETRY_VIRTUALENVS_IN_PROJECT: true
-      POETRY_NO_INTERACTION: 1
-      PATH: "$POETRY_HOME/bin:$PATH"
     steps:
       - uses: actions/checkout@v3
       - name: install system dependencies
@@ -24,13 +22,12 @@ jobs:
       - name: install packages with Poetry
         run: |
           pip install --upgrade pip
-          python3 -m venv $POETRY_HOME
-          $POETRY_HOME/bin/pip install poetry==1.5.1
-          poetry --version
-          poetry install
-          echo -e "source $(poetry env info --path)/bin/activate" >> ~/.bashrc
+          pip install poetry==1.5.1
+          $POETRY_HOME/bin/poetry --version
+          $POETRY_HOME/bin/poetry config virtualenvs.in-project true
+          $POETRY_HOME/bin/poetry install --no-interaction
       - name: lint
-        run: poetry run $(make lint)
+        run: $POETRY_HOME/bin/poetry run $(make lint)
       - name: test
         run: make test
       - name: format
