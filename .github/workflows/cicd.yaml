@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: python:3.9-slim-buster
+    env:
+      POETRY_HOME: /opt/poetry
     steps:
       - uses: actions/checkout@v3
       - name: install system dependencies
@@ -19,13 +21,14 @@ jobs:
       - name: install packages with Poetry
         run: |
           pip install --upgrade pip
-          export POETRY_HOME=/opt/poetry
           python3 -m venv $POETRY_HOME
           $POETRY_HOME/bin/pip install poetry==1.5.1
           $POETRY_HOME/bin/poetry --version
           $POETRY_HOME/bin/poetry install --no-interaction
       - name: lint
-        run: make lint
+        run: |
+          $POETRY_HOME/bin/poetry shell
+          make lint
       - name: test
         run: make test
       - name: format
