@@ -31,7 +31,7 @@ jobs:
           echo $(poetry env info)
           poetry run ruff .
       - name: test
-        run: make test
+        run: poetry run nose2 -s .
       - name: format
         run: make format
       - name: deploy
