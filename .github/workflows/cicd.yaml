@@ -23,11 +23,11 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install poetry==1.5.1
-          $POETRY_HOME/bin/poetry --version
-          $POETRY_HOME/bin/poetry config virtualenvs.in-project true
-          $POETRY_HOME/bin/poetry install --no-interaction
+          poetry --version
+          poetry config virtualenvs.in-project true
+          poetry install --no-interaction
       - name: lint
-        run: $POETRY_HOME/bin/poetry run $(make lint)
+        run: poetry run $(make lint)
       - name: test
         run: make test
       - name: format
