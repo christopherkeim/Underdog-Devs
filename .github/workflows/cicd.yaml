@@ -24,7 +24,8 @@ jobs:
           python3 -m venv $POETRY_HOME
           $POETRY_HOME/bin/pip install poetry==1.5.1
           $POETRY_HOME/bin/poetry --version
-          $POETRY_HOME/bin/poetry install --no-interaction
+          $POETRY_HOME/bin/poetry config virtualenvs.in-project true
+          $POETRY_HOME/bin/poetry install --no-interaction --no-root
       - name: lint
         run: $POETRY_HOME/bin/poetry run $(make lint)
       - name: test
