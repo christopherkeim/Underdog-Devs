@@ -26,9 +26,7 @@ jobs:
           $POETRY_HOME/bin/poetry --version
           $POETRY_HOME/bin/poetry install --no-interaction
       - name: lint
-        run: |
-          $POETRY_HOME/bin/poetry shell
-          make lint
+        run: $POETRY_HOME/bin/poetry run $(make lint)
       - name: test
         run: make test
       - name: format
