@@ -16,4 +16,8 @@ Each folder will contain:
 
 - [x] Migrate to Poetry for package management
 
+- [x] Migrate to Rust for speedy linting
+
+- [x] Migrate to Pytest for unit testing
+
 - [ ] Type hinting !!
