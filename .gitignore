@@ -17,6 +17,9 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# Linting
+.ruff_cache
+
 # IDEs
 .vscode
 
