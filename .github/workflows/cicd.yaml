@@ -9,8 +9,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: python:3.9-slim-buster
     steps:
       - uses: actions/checkout@v3
+      - name: install Poetry
+        run: |
+          pip install --upgrade pip
+          export POETRY_HOME=/opt/poetry
+          python3 -m venv $POETRY_HOME
+          $POETRY_HOME/bin/pip install poetry==1.2.0
+          $POETRY_HOME/bin/poetry --version
       - name: install packages
         run: make install
       - name: lint
