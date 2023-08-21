@@ -27,11 +27,9 @@ jobs:
           poetry config virtualenvs.in-project true
           poetry install --no-interaction
       - name: lint
-        run: |
-          echo $(poetry env info)
-          poetry run ruff .
+        run: make lint
       - name: test
-        run: poetry run nose2 -s .
+        run: make test
       - name: format
         run: make format
       - name: deploy

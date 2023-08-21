@@ -2,13 +2,13 @@ install:
 	poetry install
 
 test:
-	nose2 -s .
+	poetry run nose2 -s .
 
 format:	
-	black .
+	poetry run black .
 
 lint:
-	ruff .
+	poetry run ruff .
 
 refactor: format lint
 
