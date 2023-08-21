@@ -2,7 +2,7 @@ install:
 	poetry install
 
 test:
-	poetry run nose2 -s .
+	poetry run pytest .
 
 format:	
 	poetry run black .
