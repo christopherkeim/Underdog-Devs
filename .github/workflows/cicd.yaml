@@ -16,15 +16,14 @@ jobs:
         run: |
           apt update && apt upgrade -y
           apt install -y make
-      - name: install Poetry
+      - name: install packages with Poetry
         run: |
           pip install --upgrade pip
           export POETRY_HOME=/opt/poetry
           python3 -m venv $POETRY_HOME
           $POETRY_HOME/bin/pip install poetry==1.2.0
           $POETRY_HOME/bin/poetry --version
-      - name: install packages
-        run: $POETRY_HOME/bin/poetry install --no-interaction
+          $POETRY_HOME/bin/poetry install --no-interaction
       - name: lint
         run: make lint
       - name: test
