@@ -22,8 +22,7 @@ jobs:
           export POETRY_HOME=/opt/poetry
           python3 -m venv $POETRY_HOME
           $POETRY_HOME/bin/pip install poetry==1.2.0
-          echo -e "export PATH="$POETRY_HOME/bin:$PATH"" >> ~/.bashrc
-          poetry --version
+          $POETRY_HOME/bin/poetry --version
       - name: install packages
         run: $POETRY_HOME/bin/poetry install --no-interaction
       - name: lint
