@@ -21,3 +21,4 @@ Each folder will contain:
 - [x] Migrate to Pytest for unit testing
 
 - [ ] Type hinting !!
+- [ ] Logging
