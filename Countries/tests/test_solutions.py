@@ -1,25 +1,32 @@
 from unittest import TestCase
 from random import randrange
-
-DATA = None
+from Countries.solutions import get_united
 
 
 class TestSolutions(TestCase):
     @classmethod
     def setUpClass(cls):
         """Connect and load data needed by tests"""
-        global DATA
         with open("./Countries/tests/fixtures/countries.txt", mode="r") as f:
-            DATA = f.read().splitlines()
+            cls.DATA = f.read().splitlines()
 
     @classmethod
     def tearDownClass(cls):
         """Clean our data out"""
-        DATA = None
+        pass
 
     def test_united(self):
         """Should return countres with 'United'"""
-        pass
+        united_words = get_united.get_united(self.DATA)
+        r = randrange(0, len(united_words))
+        self.assertEqual(len(united_words), 3)
+        self.assertEqual(
+            united_words,
+            ["United Arab Emirates", "United Kingdom", "United States of America"],
+        )
+        self.assertTrue("United" in united_words[r])
+        # Sad paths
+        self.assertRaises(TypeError, get_united, [1, 2, 3, 4])
 
     def test_begin_end_vowel(self):
         """Should return countries that begin and end with a vowel"""
