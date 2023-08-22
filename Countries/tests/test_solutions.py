@@ -1,6 +1,6 @@
 from unittest import TestCase
 from random import randrange
-from Countries.solutions import get_united
+from Countries.solutions import get_united, get_begin_end_vowel
 
 
 class TestSolutions(TestCase):
@@ -28,9 +28,17 @@ class TestSolutions(TestCase):
         # Sad paths
         self.assertRaises(TypeError, get_united, [1, 2, 3, 4])
 
-    def test_begin_end_vowel(self):
+    def test_get_begin_end_vowel(self):
         """Should return countries that begin and end with a vowel"""
-        pass
+        vowel_countries = get_begin_end_vowel.get_begin_end_vowel(self.DATA)
+        r = randrange(0, len(vowel_countries))
+        self.assertTrue("United States of America" in vowel_countries)
+        self.assertTrue("India" in vowel_countries)
+        self.assertFalse("Somalia" in vowel_countries)
+        self.assertFalse("Italy" in vowel_countries)
+        # Sad paths
+        self.assertRaises(TypeError, get_begin_end_vowel, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_begin_end_vowel, "Hello")
 
     def test_gt_50_percent_vowel(self):
         """Should return countries that are > 50% vowels"""
