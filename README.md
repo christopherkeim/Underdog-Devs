@@ -1,4 +1,9 @@
 [![CI](https://github.com/christopherkeim/Underdog-Devs/actions/workflows/cicd.yaml/badge.svg)](https://github.com/christopherkeim/Underdog-Devs/actions/workflows/cicd.yaml)
+![Python Version](https://img.shields.io/badge/python-3.9-blue.svg)
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
+![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
+
+
 
 # Underdog-Devs
 
