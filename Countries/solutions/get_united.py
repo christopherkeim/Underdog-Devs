@@ -1,5 +1,6 @@
 """
-This function should consume the countries.txt data and return all of the words that contain "United"
+This function should consume the countries.txt data and return all of the words that 
+contain "United"
 """
 import logging
 
@@ -11,7 +12,7 @@ def get_united(data: list[str]) -> list[str]:
 
     # Check if we have the correct paramter input type
     logger.info("Checking data type of input.")
-    if type(data) != list and type(data[0]) != str:
+    if not isinstance(data, list) or not isinstance(data[0], str):
         raise TypeError("This function requires a list of strings as input.")
 
     logger.info("Generating list of words with 'United'.")
