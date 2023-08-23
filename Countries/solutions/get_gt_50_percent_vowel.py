@@ -14,7 +14,7 @@ def get_gt_50_percent_vowel(data: list[str]) -> list[str]:
 
     # Check if we have the correct paramter input type
     logger.info("Checking data type of input.")
-    if not isinstance(data, list) or not isinstance(data[0], str):
+    if not isinstance(data, list) or not all(isinstance(word, str) for word in data):
         raise TypeError("This function requires a list of strings as input.")
 
     # define our vowels in list[str]
