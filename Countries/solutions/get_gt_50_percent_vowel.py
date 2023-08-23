@@ -24,6 +24,8 @@ def get_gt_50_percent_vowel(data: list[str]) -> list[str]:
     gt_50_vowels: list[str] = []
 
     # Loop through each word in data
+    logger.info("Extracting countries with > 50% vowels.")
+
     for word in data:
         # Initialize a counter
         counter: int = 0
