@@ -3,6 +3,7 @@ from random import randrange
 from Countries.solutions.get_united import get_united
 from Countries.solutions.get_begin_end_vowel import get_begin_end_vowel
 from Countries.solutions.get_gt_50_percent_vowel import get_gt_50_percent_vowel
+from Countries.solutions.get_shortest_name import get_shortest_name
 
 
 class TestSolutions(TestCase):
@@ -54,7 +55,14 @@ class TestSolutions(TestCase):
 
     def test_shortest_country_name(self):
         """Should return the country with shortest name handling ties"""
-        pass
+        shortest_names = get_shortest_name(self.DATA)
+        self.assertTrue(len(shortest_names) > 1)
+        self.assertEqual(len(shortest_names[0]), len(shortest_names[1]))
+        self.assertFalse("Spain" in shortest_names)
+        self.assertFalse("Benin" in shortest_names)
+        # Sad paths
+        self.assertRaises(TypeError, get_shortest_name, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_shortest_name, "Hello")
 
     def test_only_one_vowel(self):
         """Should return countries containing only one vowel handling multiple instances of vowel"""
