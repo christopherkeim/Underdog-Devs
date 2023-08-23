@@ -10,9 +10,9 @@ logger = logging.getLogger()
 def get_united(data: list[str]) -> list[str]:
     """Return a list of strings holding 'United' countries"""
 
-    # Check if we have the correct paramter input type
+    # Check if we have the correct parameter input type
     logger.info("Checking data type of input.")
-    if not isinstance(data, list) or not isinstance(data[0], str):
+    if not isinstance(data, list) or not all(isinstance(word, str) for word in data):
         raise TypeError("This function requires a list of strings as input.")
 
     logger.info("Generating list of words with 'United'.")

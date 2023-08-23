@@ -1,6 +1,8 @@
 from unittest import TestCase
 from random import randrange
-from Countries.solutions import get_united, get_begin_end_vowel
+from Countries.solutions.get_united import get_united
+from Countries.solutions.get_begin_end_vowel import get_begin_end_vowel
+from Countries.solutions.get_gt_50_percent_vowel import get_gt_50_percent_vowel
 
 
 class TestSolutions(TestCase):
@@ -13,11 +15,11 @@ class TestSolutions(TestCase):
     @classmethod
     def tearDownClass(cls):
         """Clean our data out"""
-        pass
+        cls.DATA = None
 
     def test_united(self):
         """Should return countres with 'United'"""
-        united_words = get_united.get_united(self.DATA)
+        united_words = get_united(self.DATA)
         r = randrange(0, len(united_words))
         self.assertEqual(len(united_words), 3)
         self.assertEqual(
@@ -30,8 +32,7 @@ class TestSolutions(TestCase):
 
     def test_get_begin_end_vowel(self):
         """Should return countries that begin and end with a vowel"""
-        vowel_countries = get_begin_end_vowel.get_begin_end_vowel(self.DATA)
-        r = randrange(0, len(vowel_countries))
+        vowel_countries = get_begin_end_vowel(self.DATA)
         self.assertTrue("United States of America" in vowel_countries)
         self.assertTrue("India" in vowel_countries)
         self.assertFalse("Somalia" in vowel_countries)
@@ -42,7 +43,14 @@ class TestSolutions(TestCase):
 
     def test_gt_50_percent_vowel(self):
         """Should return countries that are > 50% vowels"""
-        pass
+        gt_50_countries = get_gt_50_percent_vowel(self.DATA)
+        self.assertTrue("Guinea" in gt_50_countries)
+        self.assertTrue("Haiti" in gt_50_countries)
+        self.assertFalse("Gabon" in gt_50_countries)
+        self.assertFalse("Greece" in gt_50_countries)
+        # Sad paths
+        self.assertRaises(TypeError, get_gt_50_percent_vowel, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_gt_50_percent_vowel, "Hello")
 
     def test_shortest_country_name(self):
         """Should return the country with shortest name handling ties"""
