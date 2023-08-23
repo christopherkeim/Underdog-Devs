@@ -4,6 +4,8 @@ from Countries.solutions.get_united import get_united
 from Countries.solutions.get_begin_end_vowel import get_begin_end_vowel
 from Countries.solutions.get_gt_50_percent_vowel import get_gt_50_percent_vowel
 from Countries.solutions.get_shortest_name import get_shortest_name
+from Countries.solutions.get_only_one_vowel import get_only_one_vowel
+from Countries.solutions.get_country_in_country import get_country_in_country
 
 
 class TestSolutions(TestCase):
@@ -66,8 +68,23 @@ class TestSolutions(TestCase):
 
     def test_only_one_vowel(self):
         """Should return countries containing only one vowel handling multiple instances of vowel"""
-        pass
+        only_one_vow = get_only_one_vowel(self.DATA)
+        self.assertTrue("Chad" in only_one_vow)
+        self.assertTrue("Egypt" in only_one_vow)
+        self.assertTrue("Congo" in only_one_vow)
+        self.assertFalse("Cuba" in only_one_vow)
+        self.assertFalse("Grenada" in only_one_vow)
+        # Sad paths
+        self.assertRaises(TypeError, get_only_one_vowel, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_only_one_vowel, "Hello")
 
     def test_country_name_inside_other(self):
         """Should return a countries with names contained inside other country names"""
-        pass
+        c_in_c = get_country_in_country(self.DATA)
+        self.assertTrue("Guinea" in c_in_c)
+        self.assertTrue("Dominica" in c_in_c)
+        self.assertFalse("Kiribati" in c_in_c)
+        self.assertFalse("Malawi" in c_in_c)
+        # Sad paths
+        self.assertRaises(TypeError, get_country_in_country, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_country_in_country, "Hello")
