@@ -11,5 +11,5 @@ logger: logging.RootLogger = logging.getLogger()
 def get_country_in_country(data: list[str]) -> list[str]:
     """
     This function should consume the data in countries.txt and return the country
-    names that contain other country names present in the dataset.
+    names that are contained within other country names present in the dataset.
     """
