@@ -1,5 +1,6 @@
 from unittest import TestCase
 from BB_Names.solutions.get_shortest_in_top_40 import get_shortest_in_top_40
+from BB_Names.solutions.get_longest_in_top_40 import get_longest_in_top_40
 
 
 class TestSolutions(TestCase):
@@ -47,7 +48,14 @@ class TestSolutions(TestCase):
         Should return the longest name in the top 40 baby names
         for 2020, handling ties.
         """
-        pass
+        longest_names = get_longest_in_top_40(self.BABY2020)
+        self.assertTrue("Sebastian" in longest_names)
+        self.assertTrue("Alexander" in longest_names)
+        self.assertEqual(len(longest_names), 2)
+        self.assertFalse("Theodore" in longest_names)
+        # Sad paths
+        self.assertRaises(TypeError, get_longest_in_top_40, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_longest_in_top_40, "Hello")
 
     def test_backwards_valid_scrabble(self):
         """
