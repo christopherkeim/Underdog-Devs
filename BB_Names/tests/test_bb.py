@@ -1,4 +1,5 @@
 from unittest import TestCase
+from BB_Names.solutions.get_shortest_in_top_40 import get_shortest_in_top_40
 
 
 class TestSolutions(TestCase):
@@ -7,18 +8,18 @@ class TestSolutions(TestCase):
         """Connect and load data needed by tests"""
         # baby names 2020
         with open(
-            "./BB-Names/tests/fixtures/baby_names_2020_short.txt", mode="r"
+            "./BB_Names/tests/fixtures/baby_names_2020_short.txt", mode="r"
         ) as f1:
             cls.BABY2020 = f1.read().split()
 
         # baby names 1880
         with open(
-            "./BB-Names/tests/fixtures/baby_names_1880_short.txt", mode="r"
+            "./BB_Names/tests/fixtures/baby_names_1880_short.txt", mode="r"
         ) as f2:
             cls.BABY1880 = f2.read().split()
 
         # scrabble words
-        with open("./BB-Names/tests/fixtures/sowpods.txt", mode="r") as f3:
+        with open("./BB_Names/tests/fixtures/sowpods.txt", mode="r") as f3:
             cls.SCRABBLE = f3.read().split()
 
     @classmethod
@@ -28,12 +29,18 @@ class TestSolutions(TestCase):
         cls.BABY1880 = None
         cls.SCRABBLE = None
 
-    def test_shortest_in_top_40(self):
+    def test_get_shortest_in_top_40(self):
         """
         Should return the shortest name in the top 40 baby names
         for 2020.
         """
-        pass
+        shortest_name = get_shortest_in_top_40(self.BABY2020)
+        self.assertEqual(len(shortest_name), 3)
+        self.assertEqual(shortest_name, "Leo")
+        self.assertNotEqual(shortest_name, "Liam")
+        # Sad paths
+        self.assertRaises(TypeError, get_shortest_in_top_40, [1, 2, 3, 4])
+        self.assertRaises(TypeError, get_shortest_in_top_40, "Hello")
 
     def test_longest_in_top_40(self):
         """
