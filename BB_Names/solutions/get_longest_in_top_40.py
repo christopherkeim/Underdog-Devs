@@ -17,3 +17,31 @@ def get_longest_in_top_40(data: list[str]) -> list[str]:
     # Check that we have the correct parameter input data type
     if not isinstance(data, list) or not all(isinstance(name, str) for name in data):
         raise TypeError("This function requires a list of strings as input.")
+
+    # Check that we have the correct parameter input value
+    if not all(len(name) > 0 for name in data):
+        raise ValueError(
+            "This function requires a list of strings greater than length 0."
+        )
+
+    # Initialize a list[str] for longest_names
+    longest_names: list[str] = []
+
+    # Initialize a length counter
+    longest_length: int = 0
+
+    # Loop through each name in our list to discover longest name in list
+    logger.info("Discovering the longest names in our dataset.")
+    for name in data:
+        if len(name) > longest_length:
+            longest_length = len(name)
+
+    # Loop through each name in the list and extract the names matching
+    # our discovered longest length
+    logger.info("Extracting the longest names from our dataset.")
+    for name in data:
+        if len(name) == longest_length:
+            longest_names.append(name)
+
+    # Return the longest names
+    return longest_names

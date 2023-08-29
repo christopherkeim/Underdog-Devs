@@ -56,6 +56,7 @@ class TestSolutions(TestCase):
         # Sad paths
         self.assertRaises(TypeError, get_longest_in_top_40, [1, 2, 3, 4])
         self.assertRaises(TypeError, get_longest_in_top_40, "Hello")
+        self.assertRaises(ValueError, get_longest_in_top_40, [""])
 
     def test_backwards_valid_scrabble(self):
         """
