@@ -24,6 +24,7 @@ The Data Structures measured here are (sowpods.txt):
 """
 
 from collections import deque
+import time
 import numpy as np
 import pandas as pd
 import logging
@@ -39,7 +40,7 @@ from BB_Names.utils.load_data import (
 from BB_Names.utils.search_reverse_matches import search_reverse_matches
 
 
-# Basic logging for standard output
+# Logging for standard output
 logging.basicConfig(level=logging.INFO)
 logger: logging.RootLogger = logging.getLogger()
 
@@ -72,7 +73,7 @@ def get_backwards_valid_scrabble_with_tuple() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring TUPLE")
+    logger.debug("Measuring TUPLE")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -94,7 +95,7 @@ def get_backwards_valid_scrabble_with_list() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring LIST")
+    logger.debug("Measuring LIST")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -116,7 +117,7 @@ def get_backwards_valid_scrabble_with_dict() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring DICT")
+    logger.debug("Measuring DICT")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -138,7 +139,7 @@ def get_backwards_valid_scrabble_with_set() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring SET")
+    logger.debug("Measuring SET")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -160,7 +161,7 @@ def get_backwards_valid_scrabble_with_frozenset() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring FROZENSET")
+    logger.debug("Measuring FROZENSET")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -182,7 +183,7 @@ def get_backwards_valid_scrabble_with_deque() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring DEQUE")
+    logger.debug("Measuring DEQUE")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
@@ -204,13 +205,17 @@ def get_backwards_valid_scrabble_with_numpy_array() -> float:
     baby_names: list[str] = load_list(BABY_PATH)
 
     # Search for reverse matches
-    logger.info("Measuring NP.NDARRAY")
+    logger.debug("Measuring NP.NDARRAY")
     runtime: float = search_reverse_matches(scrabble_words, baby_names)
     return runtime
 
 
-# Main
-if __name__ == "__main__":
+def runtime_tester(iters: int = 100) -> pd.DataFrame:
+    """
+    This function tests the runtimes of different data structures a given
+    number of times, calculates their average runtimes, and returns the
+    results in a pandas DataFrame.
+    """
     # Define our indices for pd.DataFrame
     indices: list[str] = [
         "Tuple",
@@ -223,31 +228,62 @@ if __name__ == "__main__":
     ]
 
     # Define our columns for pd.DataFrame
-    cols = ["runtimes_seconds"]
+    cols = ["avg_runtimes_seconds"]
 
-    # Measure our runtimes
-    time_tuple: float = get_backwards_valid_scrabble_with_tuple()
-    time_list: float = get_backwards_valid_scrabble_with_list()
-    time_dict: float = get_backwards_valid_scrabble_with_dict()
-    time_set: float = get_backwards_valid_scrabble_with_set()
-    time_frozen_set: float = get_backwards_valid_scrabble_with_frozenset()
-    time_deque: float = get_backwards_valid_scrabble_with_deque()
-    time_numpy_array: float = get_backwards_valid_scrabble_with_numpy_array()
+    # Initialize a dictionary to hold our measured runtimes
+    runtime_dict: dict[str, float] = dict.fromkeys(indices, 0.0)
 
-    # Collect our runtimes
-    runtimes: list[float] = [
-        time_tuple,
-        time_list,
-        time_dict,
-        time_set,
-        time_frozen_set,
-        time_deque,
-        time_numpy_array,
-    ]
+    # For a total of iters
+    for i in range(iters):
+        # Measure our runtimes
+        time_tuple: float = get_backwards_valid_scrabble_with_tuple()
+        time_list: float = get_backwards_valid_scrabble_with_list()
+        time_dict: float = get_backwards_valid_scrabble_with_dict()
+        time_set: float = get_backwards_valid_scrabble_with_set()
+        time_frozen_set: float = get_backwards_valid_scrabble_with_frozenset()
+        time_deque: float = get_backwards_valid_scrabble_with_deque()
+        time_numpy_array: float = get_backwards_valid_scrabble_with_numpy_array()
+
+        # Collect our runtimes
+        runtimes: list[float] = [
+            time_tuple,
+            time_list,
+            time_dict,
+            time_set,
+            time_frozen_set,
+            time_deque,
+            time_numpy_array,
+        ]
+
+        # Add these values to to the dictionary
+        for ind, key in enumerate(runtime_dict):
+            runtime_dict[key] += runtimes[ind]
+
+    # Calculate our average runtimes
+    avg_runtimes: list[float] = [(rt / iters) for rt in list(runtime_dict.values())]
 
     # Construct our DataFrame
-    runtime_df: pd.DataFrame = pd.DataFrame(runtimes, index=indices, columns=cols)
+    runtime_df: pd.DataFrame = pd.DataFrame(avg_runtimes, index=indices, columns=cols)
+
+    # Return our average calculated runtimes as a pd.DataFrame
+    return runtime_df
+
+
+# Main
+if __name__ == "__main__":
+    # Calculate the average runtimes for a desired number of test iterations
+    iterations: int = 100
+    logger.info(f"Calculating average runtimes for {iterations} iterations.\n")
+
+    # START TIME TEST
+    start_time_test: float = time.time()
+    avg_runtime_df: pd.DataFrame = runtime_tester(iters=iterations)
+
+    # END TIME TEST
+    end_time_test: float = time.time()
+    total_time_test: float = end_time_test - start_time_test
 
     # Log our results
     logger.info(f"{'#'*10} Data Structure Runtime Suite Results {'#'*10}\n")
-    logger.info(f"\n{runtime_df.sort_values(by='runtimes_seconds')}")
+    logger.info(f"\n{avg_runtime_df.sort_values(by='avg_runtimes_seconds')}\n")
+    logger.info(f"Completed in: {total_time_test} seconds.")

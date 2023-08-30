@@ -34,8 +34,8 @@ def search_reverse_matches(
     end_time = time.time()
     total_time = end_time - t
     # Return our correct ansers as a set
-    logger.info(matches)
-    logger.info(f"Total time taken: {total_time}\n")
+    logger.debug(matches)
+    logger.debug(f"Total time taken: {total_time}\n")
 
     # Return matches and total_time as a tuple
     return total_time
