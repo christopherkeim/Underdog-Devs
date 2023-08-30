@@ -24,10 +24,10 @@ def search_reverse_matches(
     # Loop over each baby name
     for name in baby_names:
         # Reverse that name
-        current_name: str = name[::-1].upper()
+        reversed_name: str = name[::-1].upper()
         # Check if that reversed name is in scrabble words
-        if current_name in scrabble_words:
-            # If it is, add it to our correct_answers set
+        if reversed_name in scrabble_words:
+            # If it is, add it to our matches set
             matches.add(name)
 
     # END TIME
