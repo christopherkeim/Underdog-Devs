@@ -1,39 +1,15 @@
-Measuring TUPLE
-{'Liam', 'Henry'}
-Total time taken: 0.15783262252807617
-
-Measuring LIST
-{'Liam', 'Henry'}
-Total time taken: 0.14752578735351562
-
-Measuring DICT
-{'Liam', 'Henry'}
-Total time taken: 2.7894973754882812e-05
-
-Measuring SET
-{'Liam', 'Henry'}
-Total time taken: 2.384185791015625e-05
-
-Measuring FROZENSET
-{'Liam', 'Henry'}
-Total time taken: 2.5987625122070312e-05
-
-Measuring DEQUE
-{'Liam', 'Henry'}
-Total time taken: 0.17645955085754395
-
-Measuring NP.NDARRAY
-{'Liam', 'Henry'}
-Total time taken: 0.19204163551330566
+Calculating average runtimes for 100 iterations.
 
 ########## Data Structure Runtime Suite Results ##########
 
 
-            runtimes_seconds
-Set                 0.000024
-Frozen Set          0.000026
-Dict                0.000028
-List                0.147526
-Tuple               0.157833
-Deque               0.176460
-np.ndarray          0.192042
+            avg_runtimes_seconds
+Set                     0.000018
+Frozen Set              0.000018
+Dict                    0.000020
+Tuple                   0.149917
+List                    0.167843
+np.ndarray              0.203342
+Deque                   0.211632
+
+Completed in: 104.97761988639832 seconds.
