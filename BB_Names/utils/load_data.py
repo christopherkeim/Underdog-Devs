@@ -1,4 +1,5 @@
 from collections import deque
+import numpy as np
 
 
 def load_list(file_path: str) -> list[str]:
@@ -72,9 +73,17 @@ def load_deque(file_path: str) -> deque[str]:
     return data
 
 
-# np.array
+def load_numpy_array(file_path: str) -> np.ndarray[str]:
+    """
+    This function takes a path to a data file as an input and returns that
+    file as a np.ndarray of strings.
+    """
+    with open(file_path, mode="r") as f:
+        data: np.ndarray[str] = np.array(f.read().splitlines(), dtype="O")
 
-# pd.Series
+    # Return the data as a deque[str]
+    return data
+
 
 # priorty queue
 
