@@ -1685,21 +1685,6 @@ files = [
 ]
 
 [[package]]
-name = "nose2"
-version = "0.13.0"
-description = "unittest with plugins"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "nose2-0.13.0-py3-none-any.whl", hash = "sha256:e29017c9309fe2c8b8a1f1db7a0e7526acaba0c3990f32a0d961e6a7bc5cc190"},
-    {file = "nose2-0.13.0.tar.gz", hash = "sha256:57c68ad676ef4b88b50694937eb52f4943aa1ca261074b4909b6e163046b46f0"},
-]
-
-[package.extras]
-coverage-plugin = ["coverage"]
-dev = ["Sphinx", "sphinx-issues", "sphinx-rtd-theme"]
-
-[[package]]
 name = "notebook"
 version = "7.0.2"
 description = "Jupyter Notebook - A web-based notebook environment for interactive computing"
@@ -3029,4 +3014,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9, <3.9.7 || >3.9.7, <3.10"
-content-hash = "c3341811c0ce7d42c5f6d2a379237e849647cf40543240cf1f4abec0f7fe897f"
+content-hash = "0e344a69a8a67944d1ce7e8c26dcf77dd0ba1529a7d405ca9217bc3d68c45fdf"
