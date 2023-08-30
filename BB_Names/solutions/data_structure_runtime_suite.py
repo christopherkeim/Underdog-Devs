@@ -98,7 +98,7 @@ def get_backwards_valid_scrabble_with_dict() -> None:
     BABY_NAMES: list[str]
     """
     # Load scrabble words into a data structure - dict[str, bool]
-    scrabble_words: dict[str, bool] = load_list(SCRABBLE_PATH)
+    scrabble_words: dict[str, bool] = load_dict(SCRABBLE_PATH)
     # Load baby names into a data structure - list[str]
     baby_names: list[str] = load_list(BABY_PATH)
 

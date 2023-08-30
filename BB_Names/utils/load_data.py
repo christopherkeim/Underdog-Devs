@@ -31,7 +31,7 @@ def load_dict(file_path: str) -> dict[str, bool]:
     file as a dictionary of file_line: True pairs.
     """
     with open(file_path, mode="r") as f:
-        data: dict[str, bool] = dict.fromkeys(f.read.splitlines(), True)
+        data: dict[str, bool] = dict.fromkeys(f.read().splitlines(), True)
 
     # Return the data as a dict[str, bool]
     return data
