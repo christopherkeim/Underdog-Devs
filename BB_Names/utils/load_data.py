@@ -36,7 +36,7 @@ def load_dict(file_path: str) -> dict[str, bool]:
     return data
 
 
-def load_tuple(file_path: str) -> tup[str]:
+def load_tuple(file_path: str) -> tuple[str]:
     """
     This function takes a path to a data file as an input and returns that
     file as a tuple of strings.
