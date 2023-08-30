@@ -43,7 +43,7 @@ class TestSolutions(TestCase):
         self.assertRaises(TypeError, get_shortest_in_top_40, [1, 2, 3, 4])
         self.assertRaises(TypeError, get_shortest_in_top_40, "Hello")
 
-    def test_longest_in_top_40(self):
+    def test_get_longest_in_top_40(self):
         """
         Should return the longest name in the top 40 baby names
         for 2020, handling ties.
@@ -58,12 +58,11 @@ class TestSolutions(TestCase):
         self.assertRaises(TypeError, get_longest_in_top_40, "Hello")
         self.assertRaises(ValueError, get_longest_in_top_40, [""])
 
-    def test_backwards_valid_scrabble(self):
+    def test_get_backwards_valid_scrabble(self):
         """
         Should return baby names that when spelled backwards are valid
         scrabble words.
         """
-        pass
 
     def test_top_40_in_both_years(self):
         """
