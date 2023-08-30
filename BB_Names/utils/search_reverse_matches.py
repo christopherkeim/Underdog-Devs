@@ -8,7 +8,7 @@ logger: logging.RootLogger = logging.getLogger()
 
 def search_reverse_matches(
     scrabble_words: Iterable[str], baby_names: Iterable[str]
-) -> None:
+) -> float:
     """
     This function searches through two collections of strings, determines whether any
     strings in the first collection when reversed are present in the second collection,
@@ -36,3 +36,6 @@ def search_reverse_matches(
     # Return our correct ansers as a set
     logger.info(matches)
     logger.info(f"Total time taken: {total_time}\n")
+
+    # Return matches and total_time as a tuple
+    return total_time
