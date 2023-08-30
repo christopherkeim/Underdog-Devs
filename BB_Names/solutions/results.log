@@ -1,15 +1,27 @@
-Calculating average runtimes for 100 iterations.
+Calculating average runtimes for 1000 iterations 🚀.
 
-########## Data Structure Runtime Suite Results ##########
+Iteration: 0/1000 at 4.291534423828125e-06 seconds.
+Iteration: 100/1000 at 104.50897717475891 seconds.
+Iteration: 200/1000 at 215.0065312385559 seconds.
+Iteration: 300/1000 at 330.05107712745667 seconds.
+Iteration: 400/1000 at 451.1222312450409 seconds.
+Iteration: 500/1000 at 573.655205488205 seconds.
+Iteration: 600/1000 at 692.0117611885071 seconds.
+Iteration: 700/1000 at 810.6488318443298 seconds.
+Iteration: 800/1000 at 925.6263978481293 seconds.
+Iteration: 900/1000 at 1040.8414301872253 seconds.
+Iteration: 999/1000 at 1152.012951850891 seconds
+
+######### ✨ Data Structure Runtime Suite Results ✨ #########
 
 
             avg_runtimes_seconds
-Set                     0.000018
-Frozen Set              0.000018
-Dict                    0.000020
-Tuple                   0.149917
-List                    0.167843
-np.ndarray              0.203342
-Deque                   0.211632
+Set                     0.000019
+Frozen Set              0.000020
+Dict                    0.000021
+Tuple                   0.169448
+List                    0.195513
+np.ndarray              0.230167
+Deque                   0.246152
 
-Completed in: 104.97761988639832 seconds.
+Completed in: 1153.146383523941 seconds 😳.

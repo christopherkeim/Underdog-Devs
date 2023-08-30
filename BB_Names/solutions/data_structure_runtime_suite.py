@@ -210,7 +210,7 @@ def get_backwards_valid_scrabble_with_numpy_array() -> float:
     return runtime
 
 
-def runtime_tester(iters: int = 100) -> pd.DataFrame:
+def runtime_tester(iters: int = 100) -> tuple[float, pd.DataFrame]:
     """
     This function tests the runtimes of different data structures a given
     number of times, calculates their average runtimes, and returns the
@@ -233,8 +233,20 @@ def runtime_tester(iters: int = 100) -> pd.DataFrame:
     # Initialize a dictionary to hold our measured runtimes
     runtime_dict: dict[str, float] = dict.fromkeys(indices, 0.0)
 
+    # START TIME TEST
+    start_time_test: float = time.time()
+
     # For a total of iters
     for i in range(iters):
+        # Progress
+        if i % 100 == 0:
+            logger.info(
+                f"Iteration: {i}/{iters} at {time.time() - start_time_test} seconds."
+            )
+        if i + 1 == iters:
+            logger.info(
+                f"Iteration: {i}/{iters} at {time.time() - start_time_test} seconds"
+            )
         # Measure our runtimes
         time_tuple: float = get_backwards_valid_scrabble_with_tuple()
         time_list: float = get_backwards_valid_scrabble_with_list()
@@ -259,31 +271,31 @@ def runtime_tester(iters: int = 100) -> pd.DataFrame:
         for ind, key in enumerate(runtime_dict):
             runtime_dict[key] += runtimes[ind]
 
+    # END TIME TEST
+    end_time_test: float = time.time()
+    total_time_test: float = end_time_test - start_time_test
+
     # Calculate our average runtimes
     avg_runtimes: list[float] = [(rt / iters) for rt in list(runtime_dict.values())]
 
     # Construct our DataFrame
-    runtime_df: pd.DataFrame = pd.DataFrame(avg_runtimes, index=indices, columns=cols)
+    avg_runtime_df: pd.DataFrame = pd.DataFrame(
+        avg_runtimes, index=indices, columns=cols
+    )
 
     # Return our average calculated runtimes as a pd.DataFrame
-    return runtime_df
+    return (total_time_test, avg_runtime_df)
 
 
 # Main
 if __name__ == "__main__":
     # Calculate the average runtimes for a desired number of test iterations
     iterations: int = 100
-    logger.info(f"Calculating average runtimes for {iterations} iterations.\n")
+    logger.info(f"Calculating average runtimes for {iterations} iterations 🚀.\n")
 
-    # START TIME TEST
-    start_time_test: float = time.time()
-    avg_runtime_df: pd.DataFrame = runtime_tester(iters=iterations)
-
-    # END TIME TEST
-    end_time_test: float = time.time()
-    total_time_test: float = end_time_test - start_time_test
+    total_time_test, avg_runtime_df = runtime_tester(iters=iterations)
 
     # Log our results
-    logger.info(f"{'#'*10} Data Structure Runtime Suite Results {'#'*10}\n")
+    logger.info(f"\n{'#'*9} ✨ Data Structure Runtime Suite Results ✨ {'#'*9}\n")
     logger.info(f"\n{avg_runtime_df.sort_values(by='avg_runtimes_seconds')}\n")
-    logger.info(f"Completed in: {total_time_test} seconds.")
+    logger.info(f"Completed in: {total_time_test} seconds 😳.")
