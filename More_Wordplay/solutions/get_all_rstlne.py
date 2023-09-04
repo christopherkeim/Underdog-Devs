@@ -3,6 +3,8 @@ Solution 4: What are all of the words that can be made from only the letters
 in “RSTLNE”? Not all of those letters need to be used, and letters can be repeated.
 
 
+Note: you are decomposing a word into its unique elements 
+
 HOMEWORK:  Read your data as a list[set[str]] 
 """
 
