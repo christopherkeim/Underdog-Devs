@@ -52,7 +52,7 @@ def get_longest_non_aeioshrtn(scrabble_words: dict[set[str]]) -> list[str]:
     # Define a set of my invalid_letters
     INVALID_LETTERS: set[str] = {"A", "E", "I", "O", "S", "H", "R", "T", "N"}
 
-    # Define storage for my matches list[str]
+    # Define storage for the matches list[str]
     matches: list[str] = []
 
     # Initialize longest_length = 0
@@ -64,9 +64,9 @@ def get_longest_non_aeioshrtn(scrabble_words: dict[set[str]]) -> list[str]:
         valid_word: bool = True
         # for letter in word:
         for letter in scrabble_words[word_key]:
-            # if letter in INVALID_LETTERS:
+            # If this letter is in INVALID_LETTERS:
             if letter in INVALID_LETTERS:
-                # Mark this word as invalid
+                # Set this word to invalid
                 valid_word: bool = False
                 # break
                 break
@@ -76,13 +76,13 @@ def get_longest_non_aeioshrtn(scrabble_words: dict[set[str]]) -> list[str]:
         # measure the length of this word
         curr_length: int = len(word_key)
 
-        # elif curr_length > longest_legnth
+        # If it is longer than the longest length
         if curr_length > longest_length:
             # Update my matches as new list [current word]
             matches: list[str] = [word_key]
             longest_length: int = curr_length
 
-        # if curr_legnth == longest_legnth
+        # If its length is == longest_length
         elif curr_length == longest_length:
             # append it to my matches list
             matches.append(word_key)
@@ -95,7 +95,7 @@ def get_longest_non_aeioshrtn_with_builtin(scrabble_words: dict[set[str]]) -> li
     # Define a set of my invalid_letters
     INVALID_LETTERS: set[str] = {"A", "E", "I", "O", "S", "H", "R", "T", "N"}
 
-    # Define storage for my matches list[str]
+    # Define storage for the matches list[str]
     matches: list[str] = []
 
     # Initialize longest_length = 0
