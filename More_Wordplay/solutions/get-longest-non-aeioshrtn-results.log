@@ -1,0 +1,8 @@
+######## ✨ get-longest-non-aeioshrtn.py results ✨ ########
+
+Results: ['BUMFLUFF', 'MUCKLUCK', 'MUDPUPPY', 'PLUGUGLY']
+
+
+Time for MY implementation: 0.12300848960876465 seconds
+
+Time for BUILTIN implementation: 0.07535743713378906 seconds
