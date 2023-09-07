@@ -23,11 +23,11 @@ logging.basicConfig(level=logging.INFO)
 logger: logging.RootLogger = logging.getLogger()
 
 # Log results to results.log file
-results_file_handler: logging.FileHandler = logging.FileHandler(
-    "More_Wordplay/solutions/get-all-rstlne-results.log", mode="w"
-)
-results_file_handler.setLevel(logging.INFO)
-logger.addHandler(results_file_handler)
+# results_file_handler: logging.FileHandler = logging.FileHandler(
+#    "More_Wordplay/solutions/get-all-rstlne-results.log", mode="w"
+# )
+# results_file_handler.setLevel(logging.INFO)
+# logger.addHandler(results_file_handler)
 
 ROOT: Path = Path("More_Wordplay")
 
