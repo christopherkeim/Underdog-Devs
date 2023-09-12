@@ -5,7 +5,6 @@ and returns a count of how many times letter occurs in word.
 
 """
 
-
 TEST_LETTER: str = "A"
 
 TEST_WORD1: str = "ALFALFA"
