@@ -64,14 +64,15 @@ def count_titles(data: List[Dict[str, str]]) -> Dict[str, int]:
         print(True)
     else:
         print(False)
-    # print(title_counts)
+
     total_counts = sum(title_counts.values())
     return total_counts
 
 
 if __name__ == "__main__":
-    """
     data = load_data_from_csv(MOVIES_PATH)
+
+    # First assumption test
     distributors: List[str] = extract_column_by_name(data, "Distributor")
     for dist in sorted(set(distributors)):
         print(dist)
@@ -84,8 +85,8 @@ if __name__ == "__main__":
     assert len(unique_titles) == total_counts, "Not unique!!!"
 
     print("They're unique!!!")
-    """
 
-    distributor, most_film_count = get_distributor_with_most_films(MOVIES_PATH)
+    # Solution
+    distributor, film_count = get_distributor_with_most_films(MOVIES_PATH)
 
-    print(distributor, most_film_count)
+    print(distributor, film_count)
