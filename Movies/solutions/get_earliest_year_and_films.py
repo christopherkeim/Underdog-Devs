@@ -17,7 +17,7 @@ were the films from that year?
 
 # In order to make comparisons - type cast Release Date -> int
 
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 from pathlib import Path
 import csv
 
