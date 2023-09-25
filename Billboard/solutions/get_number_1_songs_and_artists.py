@@ -17,7 +17,7 @@ for more than one week, only print it once. Example output:
 
 # Q2: Is this dataset static and valid?
 
-from typing import Dict, List, Tuple, Set
+from typing import Tuple, Set
 from pathlib import Path
 import csv
 
