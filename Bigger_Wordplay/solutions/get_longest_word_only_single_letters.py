@@ -12,7 +12,7 @@ Solution 1: What is the longest word where no letter is used more than once?
 
 # Note: write unit tests for this
 
-from typing import List, Optional
+from typing import List
 from collections import defaultdict, Counter
 from pathlib import Path
 
