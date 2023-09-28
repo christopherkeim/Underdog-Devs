@@ -11,7 +11,7 @@ Requirements:
     3. Use a timing function as well
 """
 
-from typing import List, Callable
+from typing import List, Callable, Any
 from pathlib import Path
 import time
 
@@ -19,12 +19,12 @@ import time
 SCRABBLE_PATH: Path = Path("Bigger_Wordplay/tests/fixtures/sowpods.txt")
 
 
-def timeit(fn: Callable) -> None:
+def timeit(fn: Callable) -> Callable:
     """
     A decorator for timing the execution of functions.
     """
 
-    def get_time(*args, **kwargs) -> None:
+    def get_time(*args, **kwargs) -> Any:
         """
         *args and **kwargs support positional and kw arguments of fn
         """
@@ -33,6 +33,7 @@ def timeit(fn: Callable) -> None:
         fn_output = fn(*args, **kwargs)
         # Print time taken for function execution to std
         print(f"Time taken in {fn.__name__}: {time.time() - start_time} seconds\n")
+
         # Decorator returns output of function
         return fn_output
 
@@ -44,6 +45,7 @@ def timeit(fn: Callable) -> None:
 def load_data_from_text_file(path: Path) -> List[str]:
     with open(path, mode="r") as f:
         data: List[str] = f.read().splitlines()
+
     return data
 
 
