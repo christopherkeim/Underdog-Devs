@@ -4,10 +4,6 @@ use 3 or fewer different letters? For example, “REFERRER” is an answer
 to this question, because it uses only 3 different letters: R, E, and F.
 """
 
-"""
-
-"""
-
 # Note: Condition 1: word length >= 8 letters
 
 # Note: Condition 2: only <= 3 unique letters, where frequency does not matter (set)
@@ -22,7 +18,7 @@ to this question, because it uses only 3 different letters: R, E, and F.
 # Example 1: XXOORRTT -> negative
 
 
-from typing import List, Set
+from typing import List
 from pathlib import Path
 
 

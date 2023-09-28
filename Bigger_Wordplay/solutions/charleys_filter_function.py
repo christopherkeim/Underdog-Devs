@@ -11,7 +11,7 @@ Requirements:
     3. Use a timing function as well
 """
 
-from typing import List, Set, Callable
+from typing import List, Callable
 from pathlib import Path
 import time
 
