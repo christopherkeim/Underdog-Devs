@@ -43,7 +43,7 @@ func main() {
 	// Loop over each word and add it's count to the hash map
 	for scanner.Scan() {
 		word := scanner.Text()
-		count := countAllAInWord(word, letter)
+		count := countLetterInWord(word, letter)
 		countMap[word] = count
 	}
 
@@ -61,7 +61,7 @@ func main() {
 }
 
 // Count all instances of the character 'a' in string
-func countAllAInWord(word string, letter string) int {
+func countLetterInWord(word string, letter string) int {
 	var counter int = 0
 	for i := 0; i < len(word); i++ {
 		if word[i] == letter[0] {
