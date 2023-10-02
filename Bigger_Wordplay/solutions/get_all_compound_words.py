@@ -8,14 +8,14 @@ from “SNOW” and “MAN”, and “BEACHBALL” is a compound word made from
 # Q1: Are "compound words" constructed from individual words in sowpods.txt?
 
 
-# Create full set of all possible permutations of sowpods (length 2 -> AA + AAH, AAH + AA)
+# Create full set of all possible permutations of sowpods (len 2 -> AA + AAH, AAH + AA)
 
 # Loop through dataset and check for membership against ^
 
 
 # Rolling hash -> look this up
 
-from typing import List, Set
+from typing import Set
 from pathlib import Path
 
 
