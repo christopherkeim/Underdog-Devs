@@ -22,6 +22,7 @@ coverage.xml
 
 # IDEs
 .vscode
+Underdog-Devs.code-workspace
 
 # Jupyter Notebook
 .ipynb_checkpoints
