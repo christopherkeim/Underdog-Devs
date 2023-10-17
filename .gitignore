@@ -72,3 +72,6 @@ pip-delete-this-directory.txt
 
 # Rust
 target/
+
+# Go
+go.mod
