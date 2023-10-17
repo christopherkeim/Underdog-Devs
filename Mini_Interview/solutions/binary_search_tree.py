@@ -141,14 +141,14 @@ def build_tree(array: List[int | str]) -> BinarySearchTreeNode:
     """
     Helper function for building a tree from an array.
     """
-    # nRoot node
-    nroot: BinarySearchTreeNode = BinarySearchTreeNode(array[0])
+    # Root node
+    root: BinarySearchTreeNode = BinarySearchTreeNode(array[0])
 
     # Loop over remaining elements in array
     for i in range(1, len(array)):
-        nroot.insert(array[i])
+        root.insert(array[i])
 
-    return nroot
+    return root
 
 
 if __name__ == "__main__":
