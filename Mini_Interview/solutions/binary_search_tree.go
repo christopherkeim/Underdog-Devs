@@ -11,14 +11,14 @@ func main() {
 	root := buildTree(a)
 
 	// In order traversal
-	fmt.Println("Sorted and deduped array: ", inOrderTraversal(root))
+	fmt.Println("Sorted and deduped array: ", root.inOrderTraversal())
 	fmt.Println()
 
 	// Delete
-	delete(root, 5)
-	fmt.Println("BST after deleting 5: ", inOrderTraversal(root))
-	fmt.Println("5 in BST: ", exists(root, 5))
-	fmt.Println("9 in BST: ", exists(root, 9))
+	root.delete(5)
+	fmt.Println("BST after deleting 5: ", root.inOrderTraversal())
+	fmt.Println("5 in BST: ", root.exists(5))
+	fmt.Println("9 in BST: ", root.exists(9))
 }
 
 type BinarySearchTree struct {
@@ -32,7 +32,7 @@ func newBinarySearchTree(value int, left *BinarySearchTree, right *BinarySearchT
 	return &root
 }
 
-func insert(r *BinarySearchTree, value int) {
+func (r *BinarySearchTree) insert(value int) {
 	// No duplicates in BST
 	if value == r.value {
 		return
@@ -41,7 +41,7 @@ func insert(r *BinarySearchTree, value int) {
 	// Smaller values are pushed down left subtree
 	if value < r.value {
 		if r.left != nil {
-			insert(r.left, value)
+			r.left.insert(value)
 		} else {
 			r.left = newBinarySearchTree(value, nil, nil)
 		}
@@ -50,22 +50,22 @@ func insert(r *BinarySearchTree, value int) {
 	// Larger values are pushed down right subtree
 	if value > r.value {
 		if r.right != nil {
-			insert(r.right, value)
+			r.right.insert(value)
 		} else {
 			r.right = newBinarySearchTree(value, nil, nil)
 		}
 	}
 }
 
-func delete(r *BinarySearchTree, value int) *BinarySearchTree {
+func (r *BinarySearchTree) delete(value int) *BinarySearchTree {
 	if value < r.value {
 		if r.left != nil {
-			r.left = delete(r.left, value)
+			r.left = r.left.delete(value)
 			return r
 		}
 	} else if value > r.value {
 		if r.right != nil {
-			r.right = delete(r.right, value)
+			r.right = r.right.delete(value)
 			return r
 		}
 	} else {
@@ -78,60 +78,63 @@ func delete(r *BinarySearchTree, value int) *BinarySearchTree {
 		if r.right == nil {
 			return r.left
 		}
-		minValue := getMin(r.right)
+		minValue := r.right.getMin()
 		r.value = minValue
-		r.right = delete(r.right, minValue)
+		r.right = r.right.delete(minValue)
 
 	}
 	return r
 }
 
-func exists(r *BinarySearchTree, value int) bool {
+func (r *BinarySearchTree) exists(value int) bool {
 	// Predicate function that returns truth of membership for a given
 	// for a given value in the Binary Search Tree
 	if value == r.value {
 		return true
+
 	} else if value < r.value {
 		if r.left == nil {
 			return false
 		}
-		return exists(r.left, value)
+		return r.left.exists(value)
+
 	} else if value > r.value {
 		if r.right == nil {
 			return false
 		}
-		return exists(r.right, value)
+		return r.right.exists(value)
+
 	} else {
 		return false
 	}
 }
 
-func getMin(r *BinarySearchTree) int {
+func (r *BinarySearchTree) getMin() int {
 	if r.left == nil {
 		return r.value
 	}
-	return getMin(r.left)
+	return r.left.getMin()
 }
 
-func getMax(r *BinarySearchTree) int {
+func (r *BinarySearchTree) getMax() int {
 	if r.right == nil {
 		return r.value
 	}
-	return getMax(r.right)
+	return r.right.getMax()
 }
 
-func inOrderTraversal(r *BinarySearchTree) []int {
+func (r *BinarySearchTree) inOrderTraversal() []int {
 	/*
 			Depth first search traversal: left subtree always comes first, with
 		    right subtree as second.
 
 		    Returns sorted and deduped / unique elements in the array.
 	*/
-	elements := make([]int, 0)
+	elements := make([]int, 0, 10)
 
 	// First visit left subtree
 	if r.left != nil {
-		elements = append(elements, inOrderTraversal(r.left)...)
+		elements = append(elements, r.left.inOrderTraversal()...)
 	}
 
 	// Next visit root
@@ -139,7 +142,7 @@ func inOrderTraversal(r *BinarySearchTree) []int {
 
 	// Finally visit right subtree
 	if r.right != nil {
-		elements = append(elements, inOrderTraversal(r.right)...)
+		elements = append(elements, r.right.inOrderTraversal()...)
 	}
 
 	return elements
@@ -151,7 +154,7 @@ func buildTree(arr []int) *BinarySearchTree {
 	root := newBinarySearchTree(arr[0], nil, nil)
 
 	for i := 1; i < len(arr); i++ {
-		insert(root, arr[i])
+		root.insert(arr[i])
 	}
 
 	return root
