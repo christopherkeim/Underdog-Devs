@@ -38,22 +38,22 @@ def check_brackets(sequence: str) -> bool:
         "]": "[",
     }
 
-    q: deque = deque()
+    stack: deque = deque()
 
     # Loop over each character in the input string
     for letter in sequence:
         # Opening bracket
         if letter in opening_brackets:
             # enqueu opening bracket onto queue
-            q.appendleft(letter)
+            stack.append(letter)
 
         # Closing brace
         else:
-            prev_opening_bracket: str = q.popleft()
+            prev_opening_bracket: str = stack.pop()
             if pairs[letter] != prev_opening_bracket:
                 return False
 
-    if len(q):
+    if len(stack):
         return False
 
     return True
