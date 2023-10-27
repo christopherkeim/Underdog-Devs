@@ -26,6 +26,10 @@ from collections import deque
 
 
 def check_brackets(sequence: str) -> bool:
+    # Odd length strings are always unbalanced
+    if len(sequence) % 2 != 0:
+        return False
+
     opening_brackets: Set[str] = {
         "(",
         "{",
@@ -44,16 +48,19 @@ def check_brackets(sequence: str) -> bool:
     for letter in sequence:
         # Opening bracket
         if letter in opening_brackets:
-            # enqueu opening bracket onto queue
+            # Push opening bracket onto stack
             stack.append(letter)
 
-        # Closing brace
+        # Closing bracket
         else:
+            if len(stack) == 0:
+                return False
+            # Pop prev opening bracket from stack
             prev_opening_bracket: str = stack.pop()
             if pairs[letter] != prev_opening_bracket:
                 return False
 
-    if len(stack):
+    if len(stack) > 0:
         return False
 
     return True
@@ -63,7 +70,9 @@ if __name__ == "__main__":
     e1: str = "{[()]}"  # positive
     e2: str = "{[(])}"  # negative
     e3: str = "[(){()}"  # negative
+    e4: str = ")"
 
     print(check_brackets(e1))
     print(check_brackets(e2))
     print(check_brackets(e3))
+    print(check_brackets(e4))
