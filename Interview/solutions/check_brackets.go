@@ -62,7 +62,7 @@ func checkBrackets(input string) bool {
 	return true
 }
 
-// QNode
+// Node
 type Node struct {
 	value rune
 	prev  *Node
@@ -80,7 +80,7 @@ func newStack() *Stack {
 }
 
 func (stack *Stack) push(item rune) {
-	// Instatiate a new Node
+	// Instantiate a new Node
 	node := Node{value: item}
 
 	// Incremement length
