@@ -16,16 +16,18 @@ def dfs(
     graph: List[str],
     start: Tuple[int, int],
     path: List[str],
-    seen: List[str],
+    seen: List[Tuple[int, int]],
     valid_words: Set[str],
 ) -> None:
     """
     Implements depth first search from a given starting node.
     """
+
     # Base case
     if start in seen:
         return
 
+    # Create local copies of path and seen and add Node
     path: List[str] = path + [graph[start[0]][start[1]]]
     seen: List[Tuple[int, int]] = seen + [start]
 
