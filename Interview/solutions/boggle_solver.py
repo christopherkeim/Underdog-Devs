@@ -1,7 +1,7 @@
 """
 Boggle solver.
 """
-from typing import List, Set, Tuple, Optional
+from typing import List, Set, Tuple
 from pathlib import Path
 
 grid: List[str] = [
