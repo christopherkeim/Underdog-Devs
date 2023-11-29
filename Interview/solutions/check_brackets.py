@@ -21,7 +21,7 @@ For recursive implemention:
     Your base case is an empty string "" or a string with 1 bracket (open or close)
     "{"
 """
-from typing import Dict, Set
+from typing import Dict, Set, List, Optional
 from collections import deque
 
 
@@ -66,13 +66,59 @@ def check_brackets(sequence: str) -> bool:
     return True
 
 
+def check_brackets_recursive(sequence: str, opens: Optional[List[str]] = None) -> bool:
+    # Initialize opens array on first call
+    opens: List[str] = opens or []
+    # Base cases
+    if sequence == "":
+        return True
+
+    opening_brackets: Set[str] = {
+        "(",
+        "{",
+        "[",
+    }
+
+    pairs: Dict[str, str] = {
+        ")": "(",
+        "}": "{",
+        "]": "[",
+    }
+
+    if sequence[0] in opening_brackets:
+        opens += [sequence[0]]
+        return check_brackets_recursive(sequence[1:], opens)
+
+    if len(opens) == 0:
+        return False
+
+    return (
+        pairs[sequence[0]] == opens.pop()
+        and check_brackets_recursive(sequence[1:], opens)
+        and len(opens) == 0
+    )
+
+
 if __name__ == "__main__":
     e1: str = "{[()]}"  # positive
     e2: str = "{[(])}"  # negative
     e3: str = "[(){()}"  # negative
     e4: str = ")"
+    e5: str = "{[]}"
+    e6: str = ""
+    e7: str = "{[{(){}}]({})()}"
+    e8: str = "{[{(){}}]({})()}]"
 
     print(check_brackets(e1))
     print(check_brackets(e2))
     print(check_brackets(e3))
     print(check_brackets(e4))
+
+    print(check_brackets_recursive(e1))
+    print(check_brackets_recursive(e2))
+    print(check_brackets_recursive(e3))
+    print(check_brackets_recursive(e4))
+    print(check_brackets_recursive(e5))
+    print(check_brackets_recursive(e6))
+    print(check_brackets_recursive(e7))
+    print(check_brackets_recursive(e8))

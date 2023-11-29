@@ -75,3 +75,6 @@ target/
 
 # Go
 go.mod
+
+# C
+.out
